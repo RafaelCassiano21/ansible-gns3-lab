@@ -39,11 +39,11 @@ This repository provides a step-by-step guide to setting up a lab environment us
 
 
 ---
-
+&nbsp;
 
 ## 2. 🔹 Install-gns3-server-and-gui
 
-GNS3 is available in the official Fedora repositories. To install both the server and GUI, run:
+#### GNS3 is available in the official Fedora repositories. To install both the server and GUI, run:
 
 `
 sudo dnf install -y gns3-server gns3-gui
@@ -51,11 +51,11 @@ sudo dnf install -y gns3-server gns3-gui
 
 
 ---
-
+&nbsp;
 
 ## 3. 🔹 Install-dynamips-and-vpcs
 
-Dynamips is an emulator required to run Cisco router images, and VPCS allows virtual PC simulations. Install them using the following steps:
+#### Dynamips is an emulator required to run Cisco router images, and VPCS allows virtual PC simulations. Install them using the following steps:
 
 Install Dynamips:
 `
@@ -74,11 +74,11 @@ sudo mv vpcs /usr/local/bin/`
 
 
 ---
-
+&nbsp;
 
 ## 4. 🔹 Configure-kvmqemu-support-optional
 
-To use KVM virtual machines within GNS3, install and configure KVM on Fedora:
+#### To use KVM virtual machines within GNS3, install and configure KVM on Fedora:
 `
 sudo dnf install -y qemu-kvm libvirt libvirt-python libvirt-client virt-install virt-manager
 sudo systemctl enable --now libvirtd
@@ -86,11 +86,11 @@ sudo usermod -aG libvirt $(whoami)`
 
 
 ---
-
+&nbsp;
 
 ## 5. 🔹 Add-docker-support-optional
 
-GNS3 also allows the use of Docker containers in its topologies. To configure Docker, run:
+#### GNS3 also allows the use of Docker containers in its topologies. To configure Docker, run:
 `
 sudo dnf install -y docker
 sudo systemctl enable --now docker
@@ -100,11 +100,11 @@ sudo usermod -aG docker $(whoami)
 
 
 ---
-
+&nbsp;
 
 ## 6. 🔹 Configure-ssh-for-cisco-devices
 
-Edit the `~/.ssh/config` file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP Your IP ( X.X.X.X ):
+#### Edit the `~/.ssh/config` file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP Your IP ( X.X.X.X ):
 
 `
 Host Your IP ( X.X.X.X )
@@ -118,11 +118,11 @@ Host Your IP ( X.X.X.X )
 
 
 ---
-
+&nbsp;
 
 ## 7. 🔹 Run-gns3
 
-After installation, you can start GNS3 by searching for the "GNS3" application in your desktop environment menu or by running:
+#### After installation, you can start GNS3 by searching for the "GNS3" application in your desktop environment menu or by running:
 
 `gns3         `
 
@@ -130,11 +130,11 @@ After installation, you can start GNS3 by searching for the "GNS3" application i
 
 
 ---
-
+&nbsp;
 
 ## 8. 🔹 Ansible-playbooks-examples 🚀🚀🚀
 
-Below are some example Ansible playbooks for managing Cisco devices.
+#### Below are some example Ansible playbooks for managing Cisco devices.
 
 ### Backup-Cisco-Configuration
 
@@ -174,7 +174,7 @@ Below are some example Ansible playbooks for managing Cisco devices.
 ```
 
 
-## Configure-Cisco-Banner 🚀🚀🚀
+### Configure-Cisco-Banner 🚀🚀🚀
 
 ```
 - name: Configure Cisco Banner
@@ -197,12 +197,15 @@ Below are some example Ansible playbooks for managing Cisco devices.
 
 ```
 
-## Configure-Acls-using-jinja2-template 🚀🚀🚀
+### Configure-Acls-using-jinja2-template 🚀🚀🚀
 
-Configure ACLs Using Jinja2 Template 
+#### Configure ACLs Using Jinja2 Template 
 
 
-Jinja2 Template `acl_template.j2`:
+**Jinja2 Template**
+
+
+`acl_template.j2`:
 ```
 ip access-list extended {{ acl_name }}
 {% for rule in acl_rules %}
@@ -210,7 +213,9 @@ ip access-list extended {{ acl_name }}
 {% endfor %}
 ```
 
-Playbook `configure_acl.yml`:
+**Playbook**
+
+`configure_acl.yml`:
 ```
 - name: Configure ACLs on Cisco
   hosts: all
@@ -235,11 +240,11 @@ Playbook `configure_acl.yml`:
 
 
 ---
-
+&nbsp;
 
 ## 9. 🔹 Inventory-Ansible.cfg
 
-inventory example
+**inventory example**
 
 ```
 [routers]
@@ -252,7 +257,7 @@ some_router_specific_variable=value
 ```
 
 
-ansible.cfg example
+**ansible.cfg example**
 
 ```
 [defaults]
@@ -277,37 +282,37 @@ ssh_args = -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1
 
 
 ---
-
+&nbsp;
 
 ## 10. 🔹 Cisco Config
 
 ## Enable and Configure SSH on Cisco Devices
 
-- Step 1: Enable SSH and Set a Hostname
+- **Step 1:** Enable SSH and Set a Hostname
 `configure terminal`
 `hostname MyRouter`
 
-- Step 2: Configure the Domain Name
+- **Step 2:** Configure the Domain Name
 `ip domain-name example.com`
 
-- Step 3: Generate RSA Keys for SSH
+- **Step 3:** Generate RSA Keys for SSH
 `crypto key generate rsa`
 When prompted, enter a key modulus size (recommended: 2048):
 `How many bits in the modulus [512]: 2048`
 
-- Step 4: Enable SSH Version 2
+- **Step 4:** Enable SSH Version 2
 `ip ssh version 2`
 
-- Step 5: Create a Local User for SSH Authentication
+- **Step 5:** Create a Local User for SSH Authentication
 `username admin privilege 15 secret mysecurepassword`
 
-- Step 6: Enable SSH Access on the VTY Lines
+- **Step 6:** Enable SSH Access on the VTY Lines
 `line vty 0 4`
 `transport input ssh`
 `login local`
 `exit`
 
-- Step 7: Save the Configuration
+- **Step 7:** Save the Configuration
 `write memory`
 
 💡 After completing these steps, your Cisco router or switch will be ready to accept SSH connections.
