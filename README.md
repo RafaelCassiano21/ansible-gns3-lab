@@ -291,30 +291,37 @@ ssh_args = -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1
 ## Enable and Configure SSH on Cisco Devices
 
 - **Step 1:** Enable SSH and Set a Hostname
+  
 ```configure terminal```
 ```hostname MyRouter```
 
 - **Step 2:** Configure the Domain Name
+  
 ```ip domain-name example.com```
 
 - **Step 3:** Generate RSA Keys for SSH
+  
 ```crypto key generate rsa```
 When prompted, enter a key modulus size (recommended: 2048):
 How many bits in the modulus [512]: 2048`
 
 - **Step 4:** Enable SSH Version 2
+  
 ```ip ssh version 2```
 
 - **Step 5:** Create a Local User for SSH Authentication
+  
 ```username admin privilege 15 secret mysecurepassword```
 
 - **Step 6:** Enable SSH Access on the VTY Lines
+  
 ```line vty 0 4```
 ```transport input ssh```
 ```login local```
 ```exit```
 
 - **Step 7:** Save the Configuration
+  
 ```write memory```
 
 💡 After completing these steps, your Cisco router or switch will be ready to accept SSH connections.
