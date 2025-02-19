@@ -1,0 +1,7 @@
+[routers]
+Your IP Router ( X.X.X.X ) ansible_network_os=ios ansible_connection=network_cli ansible_user=admin ansible_ssh_pass=cisco ansible_ssh_common_args='-o KexAlgorithms=+di
+ffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa -o Ciphers=+aes128-cbc,aes192-cbc,aes256-cbc,3des-cbc -o StrictHo
+stKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[routers:vars]
+some_router_specific_variable=value
