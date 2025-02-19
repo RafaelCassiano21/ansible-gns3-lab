@@ -2,6 +2,13 @@
 
 This repository provides a step-by-step guide to setting up a lab environment using GNS3 with Ansible for managing Cisco devices. The environment includes the installation of required packages, GNS3 setup, KVM/QEMU support, and Docker configuration, along with automation examples using Ansible.
 
+Important points:
+
+    For confidential passwords, make sure to create variables and encrypt them;
+    For a production environment, create environment variables. This example was applied to a lab and development environment;
+    Environment tested with RHEL 9 and Fedora;
+    Depending on the environment, not all configurations may be necessary. We recommend adapting them as needed according to each scenario.
+
 ## Table of Contents
 
 1. [Install Required Packages](#1-install-required-packages)
@@ -16,6 +23,10 @@ This repository provides a step-by-step guide to setting up a lab environment us
    - [Configure Cisco Banner](#configure-cisco-banner)
    - [Configure ACLs Using Jinja2 Template](#configure-acls-using-jinja2-template)
 9. [Inventory-Ansible.cfg](#9-Inventory-Ansible.cfg)
+10. [Cisco Config](#10-cisco-config)
+   - [Backup Cisco Configuration](#backup-cisco-configuration)
+   - [Configure Cisco Banner](#configure-cisco-banner)
+   - [Configure ACLs Using Jinja2 Template](#configure-acls-using-jinja2-template)
 
 ---
 
@@ -93,10 +104,10 @@ Again, after adding your user to the docker group, log out and log back in or re
 
 ## 6. Configure-ssh-for-cisco-devices
 
-Edit the `~/.ssh/config` file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP 192.168.122.51:
+Edit the `~/.ssh/config` file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP Your IP ( X.X.X.X ):
 
 `
-Host 192.168.122.51
+Host Your IP ( X.X.X.X )
     KexAlgorithms +diffie-hellman-group1-sha1
     HostKeyAlgorithms +ssh-rsa
     PubkeyAcceptedAlgorithms +ssh-rsa
@@ -133,7 +144,7 @@ Below are some example Ansible playbooks for managing Cisco devices.
   gather_facts: yes
   vars:
     ansible_user: admin
-    ansible_ssh_pass: redhat
+    ansible_ssh_pass: cisco
     ansible_network_os: ios
     ansible_connection: network_cli
 
@@ -171,7 +182,7 @@ Below are some example Ansible playbooks for managing Cisco devices.
   gather_facts: no
   vars:
     ansible_user: admin
-    ansible_ssh_pass: redhat
+    ansible_ssh_pass: cisco
     ansible_network_os: ios
     ansible_connection: network_cli
 
@@ -206,7 +217,7 @@ Playbook `configure_acl.yml`:
   gather_facts: no
   vars:
     ansible_user: admin
-    ansible_ssh_pass: redhat
+    ansible_ssh_pass: cisco
     ansible_network_os: ios
     ansible_connection: network_cli
     acl_name: "SECURITY_RULES"
@@ -232,7 +243,7 @@ inventory example
 
 ```
 [routers]
-192.168.122.51 ansible_network_os=ios ansible_connection=network_cli ansible_user=admin ansible_ssh_pass=redhat ansible_ssh_common_args='-o KexAlgorithms=+di
+Your IP ( X.X.X.X ) ansible_network_os=ios ansible_connection=network_cli ansible_user=admin ansible_ssh_pass=cisco ansible_ssh_common_args='-o KexAlgorithms=+di
 ffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa -o Ciphers=+aes128-cbc,aes192-cbc,aes256-cbc,3des-cbc -o StrictHo
 stKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
@@ -265,5 +276,40 @@ ssh_args = -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1
 
 
 
+---
+
+
+## 10. Cisco Config
+
+## Enable and Configure SSH on Cisco Devices
+
+- Step 1: Enable SSH and Set a Hostname
+`configure terminal`
+`hostname MyRouter`
+
+- Step 2: Configure the Domain Name
+`ip domain-name example.com`
+
+- Step 3: Generate RSA Keys for SSH
+`crypto key generate rsa`
+When prompted, enter a key modulus size (recommended: 2048):
+`How many bits in the modulus [512]: 2048`
+
+- Step 4: Enable SSH Version 2
+`ip ssh version 2`
+
+- Step 5: Create a Local User for SSH Authentication
+`username admin privilege 15 secret mysecurepassword`
+
+- Step 6: Enable SSH Access on the VTY Lines
+`line vty 0 4`
+`transport input ssh`
+`login local`
+`exit`
+
+- Step 7: Save the Configuration
+`write memory`
+
+After completing these steps, your Cisco router or switch will be ready to accept SSH connections.
 
 
