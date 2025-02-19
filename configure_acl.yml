@@ -1,0 +1,18 @@
+- name: Configure ACLs on Cisco
+  hosts: all
+  gather_facts: no
+  vars:
+    ansible_user: admin
+    ansible_ssh_pass: cisco
+    ansible_network_os: ios
+    ansible_connection: network_cli
+    acl_name: "SECURITY_RULES"
+    acl_rules:
+      - { action: "deny", protocol: "tcp", source: "any", source_wildcard: "0.0.0.0", destination: "any", destination_wildcard: "0.0.0.0 eq 22" }
+      - { action: "permit", protocol: "ip", source: "192.168.1.0", source_wildcard: "0.0.0.255", destination: "any", destination_wildcard: "0.0.0.0" }
+      - { action: "deny", protocol: "ip", source: "10.0.0.0", source_wildcard: "0.255.255.255", destination: "any", destination_wildcard: "0.0.0.0" }
+
+  tasks:
+    - name: Apply ACL configuration
+      cisco.ios.ios_config:
+        src: acl_template.j2
