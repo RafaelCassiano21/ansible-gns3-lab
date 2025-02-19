@@ -24,7 +24,7 @@ This repository provides a step-by-step guide to setting up a lab environment us
    - [Configure ACLs Using Jinja2 Template](#configure-acls-using-jinja2-template)
 9. [Inventory-Ansible.cfg](#9-Inventory-Ansible.cfg)
 10. [Cisco Config](#10-cisco-config)
-11. [Use GNS3]{11-Use-GNS3)
+11. [Use GNS3](#11-Use-GNS3)
 
 
 
