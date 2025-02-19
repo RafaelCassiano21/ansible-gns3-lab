@@ -94,7 +94,7 @@ sudo usermod -aG libvirt $(whoami)
 
 #### GNS3 also allows the use of Docker containers in its topologies. To configure Docker, run:
 ```
-sudo dnf install -y docker`
+sudo dnf install -y docker
 sudo systemctl enable --now docker
 sudo usermod -aG docker $(whoami)
 ```
