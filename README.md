@@ -302,6 +302,7 @@ ssh_args = -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1
 - **Step 3:** Generate RSA Keys for SSH
   
 ```crypto key generate rsa```
+
 When prompted, enter a key modulus size (recommended: 2048):
 How many bits in the modulus [512]: 2048`
 
