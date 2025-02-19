@@ -2,12 +2,12 @@
 
 This repository provides a step-by-step guide to setting up a lab environment using GNS3 with Ansible for managing Cisco devices. The environment includes the installation of required packages, GNS3 setup, KVM/QEMU support, and Docker configuration, along with automation examples using Ansible.
 
-Important points:
+** ⭐ Important points:**
 
-- For confidential passwords, make sure to create variables and encrypt them;
-- For a production environment, create environment variables. This example was applied to a lab and development environment;
-- Environment tested with RHEL 9 and Fedora;
-- Depending on the environment, not all configurations may be necessary. We recommend adapting them as needed according to each scenario.
+- *For confidential passwords, make sure to create variables and encrypt them;*
+- *For a production environment, create environment variables. This example was applied to a lab and development environment;*
+- *Environment tested with RHEL 9 and Fedora;*
+- *Depending on the environment, not all configurations may be necessary. We recommend adapting them as needed according to each scenario.*
 
 ## 🔹 Table of Contents
 
@@ -32,7 +32,7 @@ Important points:
 
 ## 1. 🔹 Install Required Packages
 
-GNS3 requires several dependencies to function correctly. Install all necessary packages using the following command:
+### GNS3 requires several dependencies to function correctly. Install all necessary packages using the following command:
 
    `sudo dnf install -y git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python3-pip python3-setuptools python3-PyQt5 python3-zmq wireshark python3-paramiko`
 
@@ -94,7 +94,7 @@ sudo dnf install -y docker
 sudo systemctl enable --now docker
 sudo usermod -aG docker $(whoami)
 `
-Again, after adding your user to the docker group, log out and log back in or restart your system.
+💡 Again, after adding your user to the docker group, log out and log back in or restart your system.
 
 
 ---
@@ -124,13 +124,13 @@ After installation, you can start GNS3 by searching for the "GNS3" application i
 
 `gns3         `
 
-On the first run, GNS3 will open a setup wizard. For local usage, select "Run appliances on my local computer" and follow the instructions.
+💡 On the first run, GNS3 will open a setup wizard. For local usage, select "Run appliances on my local computer" and follow the instructions.
 
 
 ---
 
 
-## 8. 🔹 Ansible-playbooks-examples
+## 8. 🔹 Ansible-playbooks-examples 🚀🚀🚀
 
 Below are some example Ansible playbooks for managing Cisco devices.
 
@@ -172,7 +172,7 @@ Below are some example Ansible playbooks for managing Cisco devices.
 ```
 
 
-## Configure-Cisco-Banner
+## Configure-Cisco-Banner 🚀🚀🚀
 
 ```
 - name: Configure Cisco Banner
@@ -195,9 +195,9 @@ Below are some example Ansible playbooks for managing Cisco devices.
 
 ```
 
-## Configure-Acls-using-jinja2-template
+## Configure-Acls-using-jinja2-template 🚀🚀🚀
 
-Configure ACLs Using Jinja2 Template
+Configure ACLs Using Jinja2 Template 
 
 
 Jinja2 Template `acl_template.j2`:
@@ -308,6 +308,9 @@ When prompted, enter a key modulus size (recommended: 2048):
 - Step 7: Save the Configuration
 `write memory`
 
-After completing these steps, your Cisco router or switch will be ready to accept SSH connections.
+💡 After completing these steps, your Cisco router or switch will be ready to accept SSH connections.
+
+
+
 
 
