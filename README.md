@@ -41,7 +41,7 @@ sudo dnf install -y gns3-server gns3-gui`
 ---
 
 
-### 3. Install-dynamips-and-vpcs
+## 3. Install-dynamips-and-vpcs
 
 Dynamips is an emulator required to run Cisco router images, and VPCS allows virtual PC simulations. Install them using the following steps:
 
@@ -64,7 +64,7 @@ sudo mv vpcs /usr/local/bin/`
 ---
 
 
-### 4. Configure-kvmqemu-support-optional
+## 4. Configure-kvmqemu-support-optional
 
 To use KVM virtual machines within GNS3, install and configure KVM on Fedora:
 `
@@ -76,7 +76,7 @@ sudo usermod -aG libvirt $(whoami)`
 ---
 
 
-### 5. Add-docker-support-optional
+## 5. Add-docker-support-optional
 
 GNS3 also allows the use of Docker containers in its topologies. To configure Docker, run:
 `
@@ -90,7 +90,7 @@ Again, after adding your user to the docker group, log out and log back in or re
 ---
 
 
-### 6. Configure-ssh-for-cisco-devices
+## 6. Configure-ssh-for-cisco-devices
 
 Edit the `~/.ssh/config` file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP 192.168.122.51:
 
@@ -162,7 +162,7 @@ Below are some example Ansible playbooks for managing Cisco devices.
 ```
 
 
-### Configure-Cisco-Banner
+## Configure-Cisco-Banner
 
 ```
 - name: Configure Cisco Banner
@@ -185,7 +185,7 @@ Below are some example Ansible playbooks for managing Cisco devices.
 
 ```
 
-### Configure-Acls-using-jinja2-template
+## Configure-Acls-using-jinja2-template
 
 Configure ACLs Using Jinja2 Template
 
@@ -225,7 +225,7 @@ Playbook `configure_acl.yml`:
 ---
 
 
-### 9. Inventory / Ansible.cfg
+## 9. Inventory / Ansible.cfg
 
 inventory example
 
