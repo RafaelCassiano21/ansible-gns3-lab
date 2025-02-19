@@ -15,7 +15,7 @@ This repository provides a step-by-step guide to setting up a lab environment us
    - [Backup Cisco Configuration](#backup-cisco-configuration)
    - [Configure Cisco Banner](#configure-cisco-banner)
    - [Configure ACLs Using Jinja2 Template](#configure-acls-using-jinja2-template)
-9. [Inventory / Ansible.cfg](#9-Inventory-/-Ansible.cfg)
+9. [Inventory-Ansible.cfg](#9-Inventory-Ansible.cfg)
 
 ---
 
@@ -226,7 +226,7 @@ Playbook `configure_acl.yml`:
 ---
 
 
-## 9. Inventory / Ansible.cfg
+## 9. Inventory-Ansible.cfg
 
 inventory example
 
