@@ -32,9 +32,9 @@ This repository provides a step-by-step guide to setting up a lab environment us
 
 ## 1. 🔹 Install Required Packages
 
-### GNS3 requires several dependencies to function correctly. Install all necessary packages using the following command:
+#### GNS3 requires several dependencies to function correctly. Install all necessary packages using the following command:
 
-   `sudo dnf install -y git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python3-pip python3-setuptools python3-PyQt5 python3-zmq wireshark python3-paramiko`
+`sudo dnf install -y git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python3-pip python3-setuptools python3-PyQt5 python3-zmq wireshark python3-paramiko`
 
 
 
@@ -44,8 +44,10 @@ This repository provides a step-by-step guide to setting up a lab environment us
 ## 2. 🔹 Install-gns3-server-and-gui
 
 GNS3 is available in the official Fedora repositories. To install both the server and GUI, run:
+
 `
-sudo dnf install -y gns3-server gns3-gui`
+sudo dnf install -y gns3-server gns3-gui
+`
 
 
 ---
