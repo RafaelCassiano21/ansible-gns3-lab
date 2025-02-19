@@ -57,7 +57,7 @@ sudo dnf install -y gns3-server gns3-gui
 
 #### Dynamips is an emulator required to run Cisco router images, and VPCS allows virtual PC simulations. Install them using the following steps:
 
-Install Dynamips:
+**Install Dynamips:**
 `
 git clone https://github.com/GNS3/dynamips
 cd dynamips
@@ -66,7 +66,7 @@ cd build
 cmake ..
 sudo make install`
 
-Install VPCS:
+**Install VPCS:**
 `
 wget https://sourceforge.net/projects/vpcs/files/0.8/vpcs_0.8b_Linux64/download -O vpcs
 chmod +x vpcs
@@ -91,11 +91,11 @@ sudo usermod -aG libvirt $(whoami)`
 ## 5. 🔹 Add-docker-support-optional
 
 #### GNS3 also allows the use of Docker containers in its topologies. To configure Docker, run:
-`
-sudo dnf install -y docker
-sudo systemctl enable --now docker
-sudo usermod -aG docker $(whoami)
-`
+
+`sudo dnf install -y docker`
+`sudo systemctl enable --now docker`
+`sudo usermod -aG docker $(whoami)`
+
 💡 Again, after adding your user to the docker group, log out and log back in or restart your system.
 
 
@@ -106,7 +106,7 @@ sudo usermod -aG docker $(whoami)
 
 #### Edit the `~/.ssh/config` file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP Your IP ( X.X.X.X ):
 
-`
+```
 Host Your IP ( X.X.X.X )
     KexAlgorithms +diffie-hellman-group1-sha1
     HostKeyAlgorithms +ssh-rsa
@@ -114,7 +114,7 @@ Host Your IP ( X.X.X.X )
     Ciphers +aes128-cbc,aes192-cbc,aes256-cbc,3des-cbc
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
-`
+```
 
 
 ---
