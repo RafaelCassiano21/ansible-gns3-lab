@@ -1,4 +1,4 @@
-# Ansible x Cisco GNSE - Lab Setup Guide
+# 📌 Ansible x Cisco GNSE - Lab Setup Guide
 
 This repository provides a step-by-step guide to setting up a lab environment using GNS3 with Ansible for managing Cisco devices. The environment includes the installation of required packages, GNS3 setup, KVM/QEMU support, and Docker configuration, along with automation examples using Ansible.
 
@@ -9,7 +9,7 @@ Important points:
 - Environment tested with RHEL 9 and Fedora;
 - Depending on the environment, not all configurations may be necessary. We recommend adapting them as needed according to each scenario.
 
-## Table of Contents
+## 🔹 Table of Contents
 
 1. [Install Required Packages](#1-install-required-packages)
 2. [Install GNS3 (Server and GUI)](#2-install-gns3-server-and-gui)
@@ -24,14 +24,13 @@ Important points:
    - [Configure ACLs Using Jinja2 Template](#configure-acls-using-jinja2-template)
 9. [Inventory-Ansible.cfg](#9-Inventory-Ansible.cfg)
 10. [Cisco Config](#10-cisco-config)
-   - [Backup Cisco Configuration](#backup-cisco-configuration)
-   - [Configure Cisco Banner](#configure-cisco-banner)
-   - [Configure ACLs Using Jinja2 Template](#configure-acls-using-jinja2-template)
+
+
 
 ---
 
 
-## 1. Install Required Packages
+## 1. 🔹 Install Required Packages
 
 GNS3 requires several dependencies to function correctly. Install all necessary packages using the following command:
 
@@ -42,7 +41,7 @@ GNS3 requires several dependencies to function correctly. Install all necessary 
 ---
 
 
-## 2. Install-gns3-server-and-gui
+## 2. 🔹 Install-gns3-server-and-gui
 
 GNS3 is available in the official Fedora repositories. To install both the server and GUI, run:
 `
@@ -52,7 +51,7 @@ sudo dnf install -y gns3-server gns3-gui`
 ---
 
 
-## 3. Install-dynamips-and-vpcs
+## 3. 🔹 Install-dynamips-and-vpcs
 
 Dynamips is an emulator required to run Cisco router images, and VPCS allows virtual PC simulations. Install them using the following steps:
 
@@ -75,7 +74,7 @@ sudo mv vpcs /usr/local/bin/`
 ---
 
 
-## 4. Configure-kvmqemu-support-optional
+## 4. 🔹 Configure-kvmqemu-support-optional
 
 To use KVM virtual machines within GNS3, install and configure KVM on Fedora:
 `
@@ -87,7 +86,7 @@ sudo usermod -aG libvirt $(whoami)`
 ---
 
 
-## 5. Add-docker-support-optional
+## 5. 🔹 Add-docker-support-optional
 
 GNS3 also allows the use of Docker containers in its topologies. To configure Docker, run:
 `
@@ -101,7 +100,7 @@ Again, after adding your user to the docker group, log out and log back in or re
 ---
 
 
-## 6. Configure-ssh-for-cisco-devices
+## 6. 🔹 Configure-ssh-for-cisco-devices
 
 Edit the `~/.ssh/config` file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP Your IP ( X.X.X.X ):
 
@@ -119,7 +118,7 @@ Host Your IP ( X.X.X.X )
 ---
 
 
-## 7. Run-gns3
+## 7. 🔹 Run-gns3
 
 After installation, you can start GNS3 by searching for the "GNS3" application in your desktop environment menu or by running:
 
@@ -131,7 +130,7 @@ On the first run, GNS3 will open a setup wizard. For local usage, select "Run ap
 ---
 
 
-## 8. Ansible-playbooks-examples
+## 8. 🔹 Ansible-playbooks-examples
 
 Below are some example Ansible playbooks for managing Cisco devices.
 
@@ -236,7 +235,7 @@ Playbook `configure_acl.yml`:
 ---
 
 
-## 9. Inventory-Ansible.cfg
+## 9. 🔹 Inventory-Ansible.cfg
 
 inventory example
 
@@ -278,7 +277,7 @@ ssh_args = -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1
 ---
 
 
-## 10. Cisco Config
+## 10. 🔹 Cisco Config
 
 ## Enable and Configure SSH on Cisco Devices
 
