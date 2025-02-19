@@ -1,0 +1,32 @@
+- name: Backup Cisco Configuration
+  hosts: all
+  gather_facts: yes
+  vars:
+    ansible_user: admin
+    ansible_ssh_pass: cisco
+    ansible_network_os: ios
+    ansible_connection: network_cli
+
+  tasks:
+    - name: Run show startup-config
+      cisco.ios.ios_command:
+        commands:
+          - show startup-config
+      register: startup_config
+
+    - name: Save configuration to a temporary file
+      ansible.builtin.copy:
+        dest: "/tmp/router_startup_config.txt"
+        content: "{{ startup_config.stdout[0] }}"
+        mode: '0644'
+
+    - name: Fetch the backup file to the local host
+      ansible.builtin.fetch:
+        src: "/tmp/router_startup_config.txt"
+        dest: "./backup_cisco/"
+        flat: yes
+
+    - name: Remove temporary file
+      ansible.builtin.file:
+        path: "/tmp/router_startup_config.txt"
+        state: absent
