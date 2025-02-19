@@ -81,7 +81,7 @@ Again, after adding your user to the docker group, log out and log back in or re
 
 ---
 
-### 6-configure-ssh-for-cisco-devices
+### 6. Configure-ssh-for-cisco-devices
 
 Edit the ~/.ssh/config file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP 192.168.122.51:
 
