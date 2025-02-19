@@ -107,10 +107,10 @@ sudo usermod -aG docker $(whoami)
 
 ## 6. 🔹 Configure-ssh-for-cisco-devices
 
-#### Edit the `~/.ssh/config` file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP Your IP ( X.X.X.X ):
+#### Edit the `~/.ssh/config` file to include SSH connection settings for Cisco devices. The example below configures a secure connection to the IP Your IP Router ( X.X.X.X ):
 
 ```
-Host Your IP ( X.X.X.X )
+Host Your IP Router ( X.X.X.X )
     KexAlgorithms +diffie-hellman-group1-sha1
     HostKeyAlgorithms +ssh-rsa
     PubkeyAcceptedAlgorithms +ssh-rsa
@@ -250,7 +250,7 @@ configure_acl.yml:
 
 ```
 [routers]
-Your IP ( X.X.X.X ) ansible_network_os=ios ansible_connection=network_cli ansible_user=admin ansible_ssh_pass=cisco ansible_ssh_common_args='-o KexAlgorithms=+di
+Your IP Router ( X.X.X.X ) ansible_network_os=ios ansible_connection=network_cli ansible_user=admin ansible_ssh_pass=cisco ansible_ssh_common_args='-o KexAlgorithms=+di
 ffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa -o Ciphers=+aes128-cbc,aes192-cbc,aes256-cbc,3des-cbc -o StrictHo
 stKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
