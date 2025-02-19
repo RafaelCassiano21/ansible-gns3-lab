@@ -15,9 +15,10 @@ This repository provides a step-by-step guide to setting up a lab environment us
    - [Backup Cisco Configuration](#backup-cisco-configuration)
    - [Configure Cisco Banner](#configure-cisco-banner)
    - [Configure ACLs Using Jinja2 Template](#configure-acls-using-jinja2-template)
-9. [Inventory / Ansible.cfg](#Inventory/Ansible.cfg)
+9. [Inventory / Ansible.cfg](#9-Inventory-/-Ansible.cfg)
 
 ---
+
 
 ## 1. Install Required Packages
 
@@ -108,7 +109,7 @@ Host 192.168.122.51
 ---
 
 
-### 7. Run-gns3
+## 7. Run-gns3
 
 After installation, you can start GNS3 by searching for the "GNS3" application in your desktop environment menu or by running:
 
@@ -120,7 +121,7 @@ On the first run, GNS3 will open a setup wizard. For local usage, select "Run ap
 ---
 
 
-### 8. Ansible-playbooks-examples
+## 8. Ansible-playbooks-examples
 
 Below are some example Ansible playbooks for managing Cisco devices.
 
