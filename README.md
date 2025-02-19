@@ -24,6 +24,7 @@ This repository provides a step-by-step guide to setting up a lab environment us
    - [Configure ACLs Using Jinja2 Template](#configure-acls-using-jinja2-template)
 9. [Inventory-Ansible.cfg](#9-Inventory-Ansible.cfg)
 10. [Cisco Config](#10-cisco-config)
+11. [Use GNS3]{11-Use-GNS3)
 
 
 
@@ -34,7 +35,7 @@ This repository provides a step-by-step guide to setting up a lab environment us
 
 #### GNS3 requires several dependencies to function correctly. Install all necessary packages using the following command:
 
-`sudo dnf install -y git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python3-pip python3-setuptools python3-PyQt5 python3-zmq wireshark python3-paramiko`
+```sudo dnf install -y git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python3-pip python3-setuptools python3-PyQt5 python3-zmq wireshark python3-paramiko```
 
 
 
@@ -45,9 +46,8 @@ This repository provides a step-by-step guide to setting up a lab environment us
 
 #### GNS3 is available in the official Fedora repositories. To install both the server and GUI, run:
 
-`
-sudo dnf install -y gns3-server gns3-gui
-`
+
+```sudo dnf install -y gns3-server gns3-gui```
 
 
 ---
@@ -80,10 +80,11 @@ sudo mv vpcs /usr/local/bin/
 ## 4. 🔹 Configure-kvmqemu-support-optional
 
 #### To use KVM virtual machines within GNS3, install and configure KVM on Fedora:
-`
+```
 sudo dnf install -y qemu-kvm libvirt libvirt-python libvirt-client virt-install virt-manager
 sudo systemctl enable --now libvirtd
-sudo usermod -aG libvirt $(whoami)`
+sudo usermod -aG libvirt $(whoami)
+```
 
 
 ---
@@ -92,10 +93,11 @@ sudo usermod -aG libvirt $(whoami)`
 ## 5. 🔹 Add-docker-support-optional
 
 #### GNS3 also allows the use of Docker containers in its topologies. To configure Docker, run:
-
-`sudo dnf install -y docker`
-`sudo systemctl enable --now docker`
-`sudo usermod -aG docker $(whoami)`
+```
+sudo dnf install -y docker`
+sudo systemctl enable --now docker
+sudo usermod -aG docker $(whoami)
+```
 
 💡 Again, after adding your user to the docker group, log out and log back in or restart your system.
 
@@ -125,7 +127,7 @@ Host Your IP ( X.X.X.X )
 
 #### After installation, you can start GNS3 by searching for the "GNS3" application in your desktop environment menu or by running:
 
-`gns3         `
+```gns3```
 
 💡 On the first run, GNS3 will open a setup wizard. For local usage, select "Run appliances on my local computer" and follow the instructions.
 
@@ -204,9 +206,8 @@ Host Your IP ( X.X.X.X )
 
 
 **Jinja2 Template**
+acl_template.j2:
 
-
-`acl_template.j2`:
 ```
 ip access-list extended {{ acl_name }}
 {% for rule in acl_rules %}
@@ -215,8 +216,8 @@ ip access-list extended {{ acl_name }}
 ```
 
 **Playbook**
+configure_acl.yml:
 
-`configure_acl.yml`:
 ```
 - name: Configure ACLs on Cisco
   hosts: all
@@ -290,35 +291,40 @@ ssh_args = -o HostKeyAlgorithms=+ssh-rsa -o KexAlgorithms=+diffie-hellman-group1
 ## Enable and Configure SSH on Cisco Devices
 
 - **Step 1:** Enable SSH and Set a Hostname
-`configure terminal`
-`hostname MyRouter`
+```configure terminal```
+```hostname MyRouter```
 
 - **Step 2:** Configure the Domain Name
-`ip domain-name example.com`
+```ip domain-name example.com```
 
 - **Step 3:** Generate RSA Keys for SSH
-`crypto key generate rsa`
+```crypto key generate rsa```
 When prompted, enter a key modulus size (recommended: 2048):
-`How many bits in the modulus [512]: 2048`
+How many bits in the modulus [512]: 2048`
 
 - **Step 4:** Enable SSH Version 2
-`ip ssh version 2`
+```ip ssh version 2```
 
 - **Step 5:** Create a Local User for SSH Authentication
-`username admin privilege 15 secret mysecurepassword`
+```username admin privilege 15 secret mysecurepassword```
 
 - **Step 6:** Enable SSH Access on the VTY Lines
-`line vty 0 4`
-`transport input ssh`
-`login local`
-`exit`
+```line vty 0 4```
+```transport input ssh```
+```login local```
+```exit```
 
 - **Step 7:** Save the Configuration
-`write memory`
+```write memory```
 
 💡 After completing these steps, your Cisco router or switch will be ready to accept SSH connections.
 
 
 
+---
+&nbsp;
 
 
+## 11. Use-GNS3
+
+[Click here and see how to use GNS3.](https://fedoramagazine.org/using-gns3-with-fedora/)
