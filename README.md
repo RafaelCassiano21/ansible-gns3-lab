@@ -58,20 +58,21 @@ sudo dnf install -y gns3-server gns3-gui
 #### Dynamips is an emulator required to run Cisco router images, and VPCS allows virtual PC simulations. Install them using the following steps:
 
 **Install Dynamips:**
-`
+```
 git clone https://github.com/GNS3/dynamips
 cd dynamips
 mkdir build
 cd build
 cmake ..
-sudo make install`
+sudo make install
+```
 
 **Install VPCS:**
-`
+```
 wget https://sourceforge.net/projects/vpcs/files/0.8/vpcs_0.8b_Linux64/download -O vpcs
 chmod +x vpcs
-sudo mv vpcs /usr/local/bin/`
-
+sudo mv vpcs /usr/local/bin/
+```
 
 ---
 &nbsp;
