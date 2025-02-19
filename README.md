@@ -35,9 +35,8 @@ Important points:
 
 GNS3 requires several dependencies to function correctly. Install all necessary packages using the following command:
 
-`
-    sudo dnf install -y git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python3-pip python3-setuptools python3-PyQt5 python3-zmq wireshark python3-paramiko
-`
+   sudo dnf install -y git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python3-pip python3-setuptools python3-PyQt5 python3-zmq wireshark python3-paramiko
+
 
 
 ---
