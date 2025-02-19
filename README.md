@@ -4,10 +4,10 @@ This repository provides a step-by-step guide to setting up a lab environment us
 
 Important points:
 
-    For confidential passwords, make sure to create variables and encrypt them;
-    For a production environment, create environment variables. This example was applied to a lab and development environment;
-    Environment tested with RHEL 9 and Fedora;
-    Depending on the environment, not all configurations may be necessary. We recommend adapting them as needed according to each scenario.
+- For confidential passwords, make sure to create variables and encrypt them;
+- For a production environment, create environment variables. This example was applied to a lab and development environment;
+- Environment tested with RHEL 9 and Fedora;
+- Depending on the environment, not all configurations may be necessary. We recommend adapting them as needed according to each scenario.
 
 ## Table of Contents
 
@@ -36,7 +36,7 @@ Important points:
 GNS3 requires several dependencies to function correctly. Install all necessary packages using the following command:
 
 `
-sudo dnf install -y git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python3-pip python3-setuptools python3-PyQt5 python3-zmq wireshark python3-paramiko
+    sudo dnf install -y git gcc cmake flex bison elfutils-libelf-devel libuuid-devel libpcap-devel python3-tornado python3-netifaces python3-devel python3-pip python3-setuptools python3-PyQt5 python3-zmq wireshark python3-paramiko
 `
 
 
