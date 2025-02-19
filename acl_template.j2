@@ -1,0 +1,4 @@
+ip access-list extended {{ acl_name }}
+{% for rule in acl_rules %}
+  {{ rule.action }} {{ rule.protocol }} {{ rule.source }} {{ rule.source_wildcard }} {{ rule.destination }} {{ rule.destination_wildcard }}
+{% endfor %}
