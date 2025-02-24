@@ -1,0 +1,29 @@
+---
+- name: Backup da Running-Config dos equipamentos Cisco via FTP
+  hosts: switches
+  gather_facts: no
+  tasks:
+    - name: Obter a running-config
+      cisco.ios.ios_command:
+        commands:
+          - show running-config
+      register: running_config
+
+    - name: Definir nome do arquivo de backup
+      set_fact:
+        backup_filename: "SW-{{ inventory_hostname }}-{{ ansible_date_time.date | replace('-', '') }}-{{ ansible_date_time.hour }}{{ ansible_date_time.minute }}.txt"
+
+    - name: Criar o arquivo localmente
+      copy:
+        content: "{{ running_config.stdout[0] }}"
+        dest: "/tmp/{{ backup_filename }}"
+
+    - name: Enviar backup para o servidor FTP
+      ansible.builtin.shell: |
+        curl -T /tmp/{{ backup_filename }} ftp://ftp_usuario:ftp_senha@ftp_server/diretorio_destino/
+      delegate_to: localhost
+
+    - name: Remover o arquivo temporário
+      file:
+        path: "/tmp/{{ backup_filename }}"
+        state: absent
